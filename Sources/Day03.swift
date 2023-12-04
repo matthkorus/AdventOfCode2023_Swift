@@ -80,8 +80,8 @@ struct Day03: AdventDay {
                 while x<grid[y].count-1 {
                     if grid.at(x,y) == "*" {
                         if adjacentNumbers(x).count >= 2 {
-                            print(adjacentNumbers(x))
-                            print(adjacentNumbers(x).reduce(1,*))
+        //                    print(adjacentNumbers(x))
+        //                    print(adjacentNumbers(x).reduce(1,*))
                             sum += adjacentNumbers(x).reduce(1,*)
                         }
                     }
@@ -91,6 +91,8 @@ struct Day03: AdventDay {
             
             func adjacentNumbers(_ x: Int) -> [Int] {
                 var ret = [Int]()
+     //           print(y)
+     //           print((x>0 ? x-1 : x)...(grid[y].count-2>x ? x+1 : x))
                 let range = Range((x>0 ? x-1 : x)...(grid[y].count-2>x ? x+1 : x))
                 if y > 0 {
                     findNumberString(y-1)
@@ -98,7 +100,7 @@ struct Day03: AdventDay {
                 
                 findNumberString(y)
                 
-                if y < grid.count - 2 { // need to account for the 0 index here and then add head room
+                if y < grid.count - 1 { // need to account for the 0 index here and then add head room
                     findNumberString(y+1)
                 }
                 
@@ -106,9 +108,10 @@ struct Day03: AdventDay {
                 // need to fix the implementation of this, can lead to numbers populating twice if they align in x with the *
                 func findNumberString(_ y:Int) {
                     var x = range.lowerBound
-                    while x<=range .upperBound {
+                    while x<range.upperBound {
                         if grid.at(x,y).isNumber {
                             var num = String(grid.at(x,y))
+                            // build the number backwards
                             var j = 1
                             while grid.at(x-j,y).isNumber {
                                 num = String(grid.at(x-j,y)) + num
@@ -116,6 +119,7 @@ struct Day03: AdventDay {
                                     j += 1
                                 } else { break }
                             }
+                            // build the number forwards
                             var k = 1
                             while grid.at(x+k,y).isNumber {
                                 num += String(grid.at(x+k,y))
@@ -123,6 +127,9 @@ struct Day03: AdventDay {
                                     k += 1
                                 } else { break }
                             }
+                            // Add in our offset so that we're not re-scanning the same character
+                            x += k-1
+                            
                             if let iNum = Int(num) {
                                 ret.append(iNum)
                             }
