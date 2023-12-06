@@ -38,7 +38,7 @@ struct Day05: AdventDay {
         // where first index in the chunk is start # and second is the range on top of it (including the initial num)
         var min = 999999999999999
         for sr in seedMap {
-            print(sr)
+    //        print(sr)
        //     print(sr)
             let start = sr[sr.startIndex]
             let range = sr[sr.endIndex-1]
@@ -90,7 +90,7 @@ struct Day05: AdventDay {
             let seed = locationToSeed(location)
             if seedExists(seed) {
                 found = true
-                print(seed)
+     //           print(seed)
             } else {
                 location+=1
             }
