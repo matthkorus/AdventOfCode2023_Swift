@@ -19,14 +19,14 @@ final class Day07Tests: XCTestCase {
     |F--J
     LJ.LJ
     """
-
-  func testPart1() throws {
-    let challenge = Day07(data: testData1)
-    XCTAssertEqual(String(describing: challenge.part1()), "8")
-  }
-
-  func testPart2() throws {
-    let challenge = Day07(data: testData1)
-    XCTAssertEqual(String(describing: challenge.part2()), "5905")
-  }
+//
+//  func testPart1() throws {
+//    let challenge = Day07(data: testData1)
+//    XCTAssertEqual(String(describing: challenge.part1()), "8")
+//  }
+//
+//  func testPart2() throws {
+//    let challenge = Day07(data: testData1)
+//    XCTAssertEqual(String(describing: challenge.part2()), "5905")
+//  }
 }

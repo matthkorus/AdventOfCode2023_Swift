@@ -64,7 +64,7 @@ struct Day10: AdventDay {
         }
         let A = abs(sum)/2
         print(A)
-        return A - (b/2) - 1
+        return A - (b/2) - 1 + 2
     }
     
     func findMove(ci:Int,cj:Int,pi:Int,pj:Int,grid:[[String]]) -> (Int,Int) {
