@@ -63,7 +63,6 @@ struct Day10: AdventDay {
             sum -= (points[j].0*points[i].1)
         }
         let A = abs(sum)/2
-        print(A)
         return A - (b/2) - 1 + 2
     }
     
